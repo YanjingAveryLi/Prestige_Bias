@@ -1,5 +1,7 @@
 # Technical Section
 
+*Yanjing Li*
+
 ## Step 1: Bayesian Updating
 
 When a reviewer encounters a paper, they do not know whether it is genuinely highly innovative.
@@ -9,11 +11,11 @@ We denote the paper's latent innovativeness as $H$, where $H=1$ indicates high i
 
 The prior $P(H=1 \mid C)$ is learned from historical review records. Let $\theta_C$ denote the perceived innovation rate for authors at prestige level $C$, with $\mathrm{Beta}(\alpha, b)$ as the initial prior ($\alpha=b=1$ corresponds to an uninformative starting point). After accumulating $n_C$ historical observations, of which $k_C$ were judged innovative, updating yields:
 
-$$\theta_C \mid k_C, n_C \sim \mathrm{Beta}(\alpha + k_C,\; b + n_C - k_C), \qquad \mathbb{E}[\theta_C] = \frac{\alpha + k_C}{\alpha + b + n_C} \tag{2,\,3}$$
+$$\theta_C \mid k_C, n_C \sim \mathrm{Beta}(\alpha + k_C,\; b + n_C - k_C), \qquad \mathbb{E}[\theta_C] = \frac{\alpha + k_C}{\alpha + b + n_C}$$
 
 This expectation serves as the prior $P(H=1 \mid C)$, fed into Bayesian updating. Assuming the likelihood $P(D \mid H)$ is independent of prestige (a simplifying assumption: all prestige effects operate through the prior), the reviewer's posterior judgment on a single paper is:
 
-$$P(H=1 \mid D, C) = \frac{P(D \mid H=1)\, P(H=1 \mid C)}{P(D \mid H=1)\, P(H=1 \mid C) + P(D \mid H=0)\, P(H=0 \mid C)} \tag{1}$$
+$$P(H=1 \mid D, C) = \frac{P(D \mid H=1)\, P(H=1 \mid C)}{P(D \mid H=1)\, P(H=1 \mid C) + P(D \mid H=0)\, P(H=0 \mid C)}$$
 
 $\theta_C$ is learned from historical data, the prior for a single paper is derived from $\theta_C$, and $\theta_C$ itself is continuously updated by new review outcomes. When historical data have been generated under bias, this structure encodes inequality into the prior and perpetuates itself.
 
@@ -27,11 +29,11 @@ The attention problem in scientific evaluation involves two interrelated decisio
 
 Having formed the posterior $P(H=1 \mid D, C)$, the reviewer compares it against a decision threshold $\tau$ and issues a positive recommendation if and only if the posterior exceeds the threshold:
 
-$$\text{Recommend} \iff P(H=1 \mid D, C) > \tau \tag{5}$$
+$$\text{Recommend} \iff P(H=1 \mid D, C) > \tau$$
 
 Since prestige affects the posterior through the prior (Eq. 1), the same paper content $D$ yields different posteriors under different prestige levels. Let $C_+$ and $C_-$ denote high and low prestige respectively:
 
-$$P(H=1 \mid D, C_+) > P(H=1 \mid D, C_-) \tag{6}$$
+$$P(H=1 \mid D, C_+) > P(H=1 \mid D, C_-)$$
 
 There therefore exists a range of content values such that $P(H=1 \mid D, C_+) > \tau \geq P(H=1 \mid D, C_-)$, i.e., an identical paper is recommended under a high-prestige author but rejected under a low-prestige author.
 If prestige additionally lowers the threshold $\tau$ applied to high-prestige authors, the bias compounds further. But the prior shift alone is sufficient to produce systematic inequality.
@@ -54,11 +56,11 @@ However, the formal mechanisms by which bias is triggered differ. In their exper
 
 Scientific evaluation is a continuous social process. A recommendation, citation, or share increases a paper's visibility; higher visibility then becomes a new social signal available to subsequent reviewers. Let $S_t$ denote a paper's social signal at time $t$. Each time a reviewer chooses to read deeply and takes a recommending action in Step 2, $S_t$ is updated:
 
-$$S_{t+1} = S_t + \mathbb{I}(A_t^* = \text{recommend or cite}) \tag{7}$$
+$$S_{t+1} = S_t + \mathbb{I}(A_t^* = \text{recommend or cite})$$
 
 Subsequent reviewers, when forming their posterior judgments, incorporate not only the current estimate of $\theta_C$ but also $S_t$ as additional social evidence in the prior update; their judgment can be further expressed as:
 
-$$P(H=1 \mid D, C, S_t) \tag{8}$$
+$$P(H=1 \mid D, C, S_t)$$
 
 ## Computational Simulation Verification
 
