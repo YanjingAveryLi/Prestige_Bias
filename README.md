@@ -1,7 +1,5 @@
 # Technical Section
 
-*Yanjing Li*
-
 ## Step 1: Bayesian Updating
 
 When a reviewer encounters a paper, they do not know whether it is genuinely highly innovative.
