@@ -46,12 +46,6 @@ The preliminary posterior after shallow reading, $P(H=1 \mid D_s, C)$, places th
 
 The mechanism of the shallow-reading trap: the low-prestige prior $P(H=1 \mid C_-)$ is lower, so even when shallow-read content signals lean innovative, the preliminary posterior often falls into the rejection region rather than the uncertainty region, causing the paper to be terminated outright, never reaching the threshold that would trigger deep reading. By contrast, the high-prestige prior $P(H=1 \mid C_+)$ is higher; the same content signal more readily pushes the preliminary posterior into the acceptance region, allowing the reviewer to recommend without deep reading. Low-prestige papers exhaust their chances of entering the uncertainty region before they ever reach the rejection boundary.
 
-#### Connection to Bai, 2022
-
-The Thompson Sampling model of Bai et al. (2022) provides a structurally analogous reference point. The logic of the two frameworks is similar: locally rational individual decisions generate global inequality at the macro level.
-
-However, the formal mechanisms by which bias is triggered differ. In their experiment, participants actively choose which group to interact with, and bias arises from concentrated exploration of the higher-mean group, i.e., a "which to choose" problem. In scientific evaluation, reviewers are typically assigned papers; the key decisions are "how deeply to engage with a given paper" and "whether the posterior exceeds the recommendation threshold $\tau$."
-
 ## Step 3: Cumulative Advantage and Path Dependence
 
 Scientific evaluation is a continuous social process. A recommendation, citation, or share increases a paper's visibility; higher visibility then becomes a new social signal available to subsequent reviewers. Let $S_t$ denote a paper's social signal at time $t$. Each time a reviewer chooses to read deeply and takes a recommending action in Step 2, $S_t$ is updated:
